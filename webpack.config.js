@@ -135,7 +135,6 @@ module.exports = () => {
               },
             },
             'resolve-url-loader', // Rewrites relative paths in url() statements
-            'sass-loader', // Takes the Sass/SCSS file and compiles to the CSS
           ],
         },
       ],

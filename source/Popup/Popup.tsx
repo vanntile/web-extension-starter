@@ -2,8 +2,6 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { browser, Tabs } from 'webextension-polyfill-ts'
 
-// import './styles.scss';
-
 function openWebPage(url: string): Promise<Tabs.Tab> {
   return browser.tabs.create({ url })
 }
@@ -22,10 +20,7 @@ const Popup: React.FC = () => {
       if (url) setBoard(url)
     }
 
-    // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error)
+    fetchData().catch(console.error)
   }, [])
 
   return (
