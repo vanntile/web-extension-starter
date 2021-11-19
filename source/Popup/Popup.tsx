@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { browser, Tabs } from 'webextension-polyfill-ts'
 
 // import './styles.scss';
@@ -10,6 +10,23 @@ function openWebPage(url: string): Promise<Tabs.Tab> {
 
 const Popup: React.FC = () => {
   const [board, setBoard] = useState('')
+  const [timestamp, setTimestamp] = useState(-1)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const tabs = await browser.tabs.query({ active: true, currentWindow: true })
+      const currentTab = tabs[0]
+
+      console.log(currentTab)
+      const url = currentTab.url
+      if (url) setBoard(url)
+    }
+
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error)
+  }, [])
 
   return (
     <section id="popup" className="p-2 min-w-[500px]">
@@ -108,6 +125,28 @@ const Popup: React.FC = () => {
         >
           Create Note
         </button>
+      </div>
+      <div>
+        <button
+          className="button button-primary"
+          type="button"
+          onClick={async () => {
+            try {
+              const tabs = await browser.tabs.query({ active: true, currentWindow: true })
+              const currentTab = tabs[0]
+              const result = await browser.tabs.executeScript(currentTab.id, {
+                code: `Math.floor(document.getElementsByClassName('html5-main-video')[0].currentTime)`,
+              })
+
+              setTimestamp(result[0])
+            } catch (e) {
+              console.log(e)
+            }
+          }}
+        >
+          Get youtube video timestamp
+        </button>
+        <p>Timestamp: {timestamp}</p>
       </div>
     </section>
   )

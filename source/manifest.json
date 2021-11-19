@@ -16,6 +16,8 @@
   "permissions": [
     "activeTab",
     "storage",
+    "clipboardWrite",
+    "clipboardRead",
     "http://*/*",
     "https://*/*"
   ],
