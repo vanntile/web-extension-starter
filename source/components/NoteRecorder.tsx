@@ -7,6 +7,8 @@ import GlobalContext from '../lib/context'
 import { createStickyNote, formatTime, getNewNote } from '../lib/helpers'
 import useLocalStorage from '../lib/hooks/useLocalStorage'
 import { ACTIONS } from '../lib/reducer'
+import { Header } from '.'
+
 
 const NoteRecorder: React.FC = () => {
   const [state, dispatch] = React.useContext(GlobalContext)
@@ -49,9 +51,10 @@ const NoteRecorder: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <div className="flex flex-row pb-2 mb-4 border-b-2 border-gray-200">
         <div className="flex-grow pr-4 overflow-hidden">
-          <h1 className="h1">{boardName}</h1>
+          <h3 className="h3">{boardName}</h3>
         </div>
         {state.page === PAGE_RECORDER && (
           <button
