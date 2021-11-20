@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { NO_BOARD, PAGE_BOARD, PAGE_RECORDER } from '../lib/constants'
+import { ColorPicker } from '.'
+import { DEFAULT_COLOR, NO_BOARD, PAGE_BOARD, PAGE_RECORDER } from '../lib/constants'
 import GlobalContext from '../lib/context'
 import useLocalStorage from '../lib/hooks/useLocalStorage'
 import { ACTIONS } from '../lib/reducer'
@@ -7,6 +8,7 @@ import { ACTIONS } from '../lib/reducer'
 const NoteRecorder: React.FC = () => {
   const [state, dispatch] = React.useContext(GlobalContext)
   const [sendTimeStamp, setSendTimeStamp] = useLocalStorage('sendTimeStamp', true)
+  const [selectedColor, setSelectedColor] = useLocalStorage('selectedColor', DEFAULT_COLOR)
   const [boardName] = useLocalStorage('boardName', NO_BOARD)
 
   return (
@@ -42,7 +44,7 @@ const NoteRecorder: React.FC = () => {
             />
             <span>Include current time in video</span>
           </label>
-          <div className="block w-6 h-6 mr-2 bg-yellow-400 border-2 border-gray-500 rounded-full"></div>
+          <ColorPicker currentColor={selectedColor} setCurrentColor={setSelectedColor} />
         </div>
         <button className="self-center w-1/2 button button-small button-primary" type="button" onClick={() => {}}>
           Send note

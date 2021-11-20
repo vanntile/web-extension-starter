@@ -13,3 +13,13 @@ interface Board {
   id: string
   name: string
 }
+
+interface MiroColor {
+  name: string
+  bg: string
+  color: string
+}
+
+interface MiroColors {
+  [key: string]: MiroColor
+}
