@@ -9,7 +9,6 @@ import useLocalStorage from '../lib/hooks/useLocalStorage'
 import { ACTIONS } from '../lib/reducer'
 import { Header } from '.'
 
-
 const NoteRecorder: React.FC = () => {
   const [state, dispatch] = React.useContext(GlobalContext)
   const [boardId] = useLocalStorage('boardId', NO_BOARD)
@@ -40,6 +39,32 @@ const NoteRecorder: React.FC = () => {
     const note = getNewNote(message, selectedColor, seconds, url, sendTimeStamp, noteIdx)
 
     try {
+      const getCanvas = async () => {
+        const tabs = await browser.tabs.query({ active: true, currentWindow: true })
+        const currentTab = tabs[0]
+
+        // const [{ x, y, width, height }] = (await browser.tabs.executeScript(currentTab.id, {
+        //   code: `document.getElementsByClassName('html5-main-video')[0].getBoundingClientRect()`,
+        // })) as ExtensionTypes.ImageDetailsRectType[]
+
+        const canvasData = await browser.tabs.captureVisibleTab(currentTab.windowId)
+
+        const formData = new FormData()
+        formData.append('image', canvasData)
+
+        const res = await fetch(`https://api.imgbb.com/1/upload?expiration=600&key=${process.env.IMAGE_BB_KEY}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          body: formData,
+        })
+        const fromAPI = await res.json()
+
+        console.log({ fromAPI })
+      }
+      getCanvas().catch(console.error)
+
       await createStickyNote(note)
 
       setNoteIdx(noteIdx + 1)
