@@ -23,6 +23,9 @@ module.exports = {
           dark_blue: '#7B92FF',
           black: '#000000',
         },
+        miro: {
+          blue: '#4262ff',
+        },
       },
     },
   },
