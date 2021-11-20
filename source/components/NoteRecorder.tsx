@@ -39,7 +39,7 @@ const NoteRecorder: React.FC = () => {
               tabIndex={0}
               checked={sendTimeStamp}
               onChange={() => {
-                setSendTimeStamp(!setSendTimeStamp)
+                setSendTimeStamp(!sendTimeStamp)
               }}
             />
             <span>Include current time in video</span>
