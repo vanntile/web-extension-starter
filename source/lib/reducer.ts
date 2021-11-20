@@ -2,6 +2,7 @@ import { PAGE_RECORDER } from './constants'
 
 export const ACTIONS = {
   CHANGE_PAGE: 'change_page',
+  CHANGE_BOARD: 'change_board',
 }
 
 export const reducer = (state: State, action: Action): State => {
@@ -11,6 +12,11 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         page: action.payload,
       }
+    case ACTIONS.CHANGE_BOARD:
+      return {
+        ...state,
+        boardChanged: true,
+      }
     default:
       return state
   }
@@ -18,4 +24,5 @@ export const reducer = (state: State, action: Action): State => {
 
 export const initialState: State = {
   page: PAGE_RECORDER,
+  boardChanged: false,
 }

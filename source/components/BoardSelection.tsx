@@ -3,7 +3,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import * as React from 'react'
 import { Fragment, useEffect } from 'react'
 import { Header } from '.'
-import { NO_BOARD, PAGE_BOARD, PAGE_RECORDER } from '../lib/constants'
+import { NO_BOARD, PAGE_RECORDER } from '../lib/constants'
 import GlobalContext from '../lib/context'
 import useAsync from '../lib/hooks/useAsync'
 import useLocalStorage from '../lib/hooks/useLocalStorage'
@@ -24,7 +24,8 @@ const boardsLoader = async () => {
 }
 
 const BoardSelection: React.FC = () => {
-  const [state, dispatch] = React.useContext(GlobalContext)
+  const context = React.useContext(GlobalContext)
+  const dispatch = context[1]
   const [boardId, setBoardId] = useLocalStorage('boardId', NO_BOARD)
   const [boardName, setBoardName] = useLocalStorage('boardName', NO_BOARD)
   const [selected, setSelected] = useLocalStorage<Board>('selectedBoard', { name: 'Select board', id: NO_BOARD })
@@ -39,9 +40,11 @@ const BoardSelection: React.FC = () => {
   }, [boards])
 
   const handleBoardSelection = (board: Board) => {
+    if (boardId === NO_BOARD) dispatch({ type: ACTIONS.CHANGE_BOARD, payload: null })
     setBoardId(board.id)
     setBoardName(board.name)
     setSelected(board)
+    dispatch({ type: ACTIONS.CHANGE_PAGE, payload: PAGE_RECORDER })
   }
 
   return (
@@ -51,17 +54,6 @@ const BoardSelection: React.FC = () => {
         <div className="flex-grow pr-4 overflow-hidden">
           <h2 className="h3">{boardName === NO_BOARD ? 'Select board' : 'Change board'}</h2>
         </div>
-        {state.page === PAGE_BOARD && (
-          <button
-            className="flex-1 ml-2 text-blue-600 border-blue-600 button button-small button-primary-border"
-            type="button"
-            onClick={() => {
-              dispatch({ type: ACTIONS.CHANGE_PAGE, payload: PAGE_RECORDER })
-            }}
-          >
-            Change note
-          </button>
-        )}
       </div>
       {status === 'error' && <div>{error}</div>}
       {status === 'pending' && <div>Loading...</div>}

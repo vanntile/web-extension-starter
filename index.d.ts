@@ -3,6 +3,7 @@ declare var miroBoardsPicker: any
 
 interface State {
   page: string
+  boardChanged: boolean
 }
 
 interface Action {

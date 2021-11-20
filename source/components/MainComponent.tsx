@@ -25,7 +25,11 @@ const MainComponent: React.FC = () => {
 
   return (
     <main className="p-4 min-w-[500px] min-h-[300px]">
-      {boardId === NO_BOARD || state.page === PAGE_BOARD ? <BoardSelection /> : <NoteRecorder />}
+      {(boardId === NO_BOARD && !state.boardChanged) || state.page === PAGE_BOARD ? (
+        <BoardSelection />
+      ) : (
+        <NoteRecorder />
+      )}
     </main>
   )
 }
