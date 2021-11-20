@@ -1019,6 +1019,16 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@headlessui/react@^1.4.2":
+  "integrity" "sha512-N8tv7kLhg9qGKBkVdtg572BvKvWhmiudmeEpOCyNwzOsZHCXBtl8AazGikIfUS+vBoub20Fse3BjawXDVPPdug=="
+  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.4.2.tgz"
+  "version" "1.4.2"
+
+"@heroicons/react@^1.0.5":
+  "integrity" "sha512-UDMyLM2KavIu2vlWfMspapw9yii7aoLwzI2Hudx4fyoPwfKfxU8r3cL8dEBXOjcLG0/oOONZzbT14M1HoNtEcg=="
+  "resolved" "https://registry.npmjs.org/@heroicons/react/-/react-1.0.5.tgz"
+  "version" "1.0.5"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   "integrity" "sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g=="
   "resolved" "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
@@ -6476,7 +6486,7 @@
     "randombytes" "^2.0.5"
     "safe-buffer" "^5.1.0"
 
-"react-dom@^17.0.2":
+"react-dom@^16 || ^17 || ^18", "react-dom@^17.0.2":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -6490,7 +6500,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@^16.11.0 || ^17.0.0", "react@^17.0.2", "react@17.0.2":
+"react@^16 || ^17 || ^18", "react@^16.11.0 || ^17.0.0", "react@^17.0.2", "react@>= 16", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.0",
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
     "@tailwindcss/typography": "^0.4.1",
     "advanced-css-reset": "^1.2.2",
     "dotenv": "^10.0.0",

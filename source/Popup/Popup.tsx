@@ -1,12 +1,16 @@
 import * as React from 'react'
-import { BoardSelection, NoteRecorder } from '../components'
-import { NO_BOARD } from '../lib/constants'
-import useLocalStorage from '../lib/hooks/useLocalStorage'
+import { MainComponent } from '../components'
+import GlobalContext from '../lib/context'
+import { reducer, initialState } from '../lib/reducer'
 
 const Popup: React.FC = () => {
-  const [boardId] = useLocalStorage('boardId', NO_BOARD)
+  const [state, dispatch] = React.useReducer(reducer, initialState)
 
-  return <main className="py-6 px-2 min-w-[500px]">{boardId === NO_BOARD ? <BoardSelection /> : <NoteRecorder />}</main>
+  return (
+    <GlobalContext.Provider value={[state, dispatch]}>
+      <MainComponent />
+    </GlobalContext.Provider>
+  )
 }
 
 export default Popup
