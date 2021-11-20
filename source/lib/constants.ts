@@ -24,6 +24,7 @@ export const MIRO_COLORS: MiroColors = {
   black: { name: 'black', color: '#000000', bg: 'bg-brand-black' },
 }
 export const DEFAULT_COLOR = 'light_yellow'
+export const NOTE_SIZE = 400
 
 export default {
   NO_BOARD,
