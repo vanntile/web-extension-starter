@@ -44,8 +44,8 @@ export const getNewNote = (
   }
 }
 
-export const createStickyNote = async (data: any) => {
-  const res = await fetch(`https://api.miro.com/v2/boards/${process.env.BOARD}/sticky_notes`, {
+export const createStickyNote = async (data: any, boardId: string) => {
+  const res = await fetch(`https://api.miro.com/v2/boards/${boardId}/sticky_notes`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

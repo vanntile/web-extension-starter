@@ -40,7 +40,7 @@ const NoteRecorder: React.FC = () => {
     const note = getNewNote(message, selectedColor, seconds, url, sendTimeStamp, noteIdx)
 
     try {
-      await createStickyNote(note)
+      await createStickyNote(note, boardId)
 
       setNoteIdx(noteIdx + 1)
       window.close()
