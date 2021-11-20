@@ -27,7 +27,7 @@ const NoteRecorder: React.FC = () => {
           </button>
         )}
       </div>
-      <div className="flex flex-col justify-center form-group flex-nowrap">
+      <div className="flex flex-col justify-center mb-2 form-group flex-nowrap">
         <label className="p-large">Your note</label>
         <textarea className="mb-2 textarea" placeholder="This is interesting" spellCheck="true" rows={5}></textarea>
         <div className="flex flex-row flex-nowrap">
